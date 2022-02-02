@@ -12,7 +12,7 @@ export const MenuItem = ({ vehicle }: Props) => {
             <ReactTooltip effect="solid" type="light" />
             <div style={{ position: 'relative' }}>
                 <h3>{vehicle.vehicle}</h3>
-                <div data-tip={`color: ${vehicle.color}`} style={{ position: 'absolute', right: '0', top: '0', backgroundColor: vehicle.color == "mint green" ? "#cfffe5" : vehicle.color, width: '30px', height: '30px', borderRadius: '50%' }}></div>
+                <div data-tip={`color: ${vehicle.color}`} style={{ position: 'absolute', right: '0', top: '0', backgroundColor: vehicle.color === "mint green" ? "#cfffe5" : vehicle.color, width: '30px', height: '30px', borderRadius: '50%' }}></div>
             </div>
             <Flex justifyContent="space-between" alignItems="center">
                 <h4>{vehicle.manufacturer}</h4>
