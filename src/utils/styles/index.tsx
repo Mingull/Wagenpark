@@ -36,7 +36,7 @@ export const Title = styled.p`
     margin: 0;
 `;
 export const Subtitle = styled(Title)`
-    font-size: .7rem;
+    font-size: 1rem;
     font-weight: normal;
 `;
 export const MenuItemStyle = styled.div`
