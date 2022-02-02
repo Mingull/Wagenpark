@@ -1,0 +1,12 @@
+body {
+    margin: 0;
+    background-color: #292929;
+    color: #ffffff;
+    font-family: 'DM Sans', sans-serif;
+    height: 100%;
+}
+
+html,
+#root {
+    height: 100%;
+}
