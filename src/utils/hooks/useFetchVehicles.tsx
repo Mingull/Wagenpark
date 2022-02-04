@@ -11,7 +11,6 @@ export function useFetchVehicles() {
         setLoading(true);
         getAllVehicles()
             .then(({ data }) => {
-                console.log(data);
                 setVehicles(data);
             })
             .catch((err) => {

@@ -4,6 +4,9 @@ import { Vehicle } from "../types";
 
 export function useFetchVehicle(id: string) {
     const [vehicle, setVehicle] = useState<Vehicle>();
+    const [vehicleName, setVehicleName] = useState('');
+    const [vehicleManu, setVehicleManu] = useState('');
+    const [vehicleColor, setVehicleColor] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState();
 
@@ -23,5 +26,5 @@ export function useFetchVehicle(id: string) {
                 }, 2000);
             });
     }, []);
-    return { vehicle, loading, error };
+    return { vehicle, vehicleName, setVehicleName, vehicleManu, setVehicleManu, vehicleColor, setVehicleColor, loading, error };
 }

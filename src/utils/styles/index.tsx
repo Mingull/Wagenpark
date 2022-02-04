@@ -39,6 +39,23 @@ export const Subtitle = styled(Title)`
     font-size: 1rem;
     font-weight: normal;
 `;
+
+export const InputField = styled.input`
+    padding: 14px 16px;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: #fff;
+    font-family: 'DM Sans';
+    background-color: #282828;
+    border-radius: 5px;
+    border: 1px solid #393939;
+    outline: none;
+    width: 100%;
+    :focus{
+        outline: 1px solid #ffffff5a;
+    }
+`;
+
 export const MenuItemStyle = styled.div`
     padding: 4px 20px;
     background-color: #252525;
@@ -89,4 +106,28 @@ export const Overlay = styled.div`
     position: fixed;
     top: 0;
     left: 0;
+`;
+
+type ButtonProps = {
+    variant: "primary" | "secondary";
+}
+export const Button = styled.button<ButtonProps>`
+    padding: 10px 20px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    font-size: 16px;
+    color: #fff;
+    font-family: 'DM Sans';
+    cursor: pointer;
+    ${({ variant }) =>
+        variant === "primary" &&
+        css`
+            background-color: #006ed3;
+        `}
+    ${({ variant }) =>
+        variant === "secondary" &&
+        css`
+            background-color: #3d3d3d;
+        `}
 `;
