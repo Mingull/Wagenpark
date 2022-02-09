@@ -16,6 +16,9 @@ export const MainButton = styled.div`
 
 export const Page = styled.div`
     padding: 35px;
+    @media (max-width: 768px) {
+        padding: 5px;
+    }
 `;
 
 export const Container = styled.div`
