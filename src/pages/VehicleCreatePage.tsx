@@ -32,7 +32,7 @@ export const VehicleCreatePage = () => {
     };
     return (
         <Page>
-            <Container style={{ width: '800px' }}>
+            <Container width='800px' >
                 <Title>Update vehicle</Title>
                 <form>
                     <div>
@@ -61,6 +61,6 @@ export const VehicleCreatePage = () => {
                     </Flex>
                 </form>
             </Container>
-        </Page>
+        </Page >
     )
 }

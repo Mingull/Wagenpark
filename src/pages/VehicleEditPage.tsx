@@ -36,7 +36,7 @@ export const VehicleEditPage = () => {
     };
     return vhContext ? (
         <Page>
-            <Container style={{ width: '800px' }}>
+            <Container width='800px'>
                 {!loading && vehicle ? <>
                     <Title>Update vehicle</Title>
                     <form>

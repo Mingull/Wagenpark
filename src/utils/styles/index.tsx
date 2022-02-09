@@ -24,7 +24,7 @@ type ContainerProps = {
     width?: string
 }
 export const Container = styled.div<ContainerProps>`
-    width: ${({ width }) => width != undefined ? '1200px' : width};
+    width: ${({ width }) => width != undefined ? width : '1200px'};
     margin: 0 auto;
     @media (max-width: 768px) {
         width: 100%;
