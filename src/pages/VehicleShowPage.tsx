@@ -14,7 +14,7 @@ export const VehicleShowPage = () => {
     }
     return (
         <Page>
-            <Container style={{ width: '800px' }}>
+            <Container width='800px'>
                 {vehicle ?
                     <div>
                         <Flex justifyContent="space-between" style={{ marginBottom: '10px' }}>

@@ -20,9 +20,11 @@ export const Page = styled.div`
         padding: 5px;
     }
 `;
-
-export const Container = styled.div`
-    width: 1200px;
+type ContainerProps = {
+    width?: string
+}
+export const Container = styled.div<ContainerProps>`
+    width: ${({ width }) => width != undefined ? '1200px' : width};
     margin: 0 auto;
     @media (max-width: 768px) {
         width: 100%;
