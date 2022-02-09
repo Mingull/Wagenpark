@@ -24,7 +24,7 @@ export const Container = styled.div`
 `;
 export const Paragraph = styled.p`
     cursor: pointer;
-    padding: 5px 10px;
+    padding: 10px 10px;
     background-color: hsl(150, 73%, 26%);
     color: hsl(0,0%,90%);
     border-radius: 5px;
