@@ -1,60 +1,59 @@
-import { useContext, useState } from "react";
-import { FaChevronCircleLeft, FaPen } from "react-icons/fa";
-import { Navigate, useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
+import { FaPen } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import { PropagateLoader } from "react-spinners";
 import { VehicleContext } from "../utils/context/VehicleContext";
-import { useFetchVehicle } from "../utils/hooks/useFetchVehicle";
-import { Button, Container, Flex, Grid, InputField, Page, Subtitle, Title } from "../utils/styles"
+import { Button, Container, Flex, Page, Title } from "../utils/styles"
 
 export const VehicleShowPage = () => {
     const navigate = useNavigate();
-    const { vehicle: vhContext } = useContext(VehicleContext);
-    const vehicleId = (vhContext && vhContext.id) || '';
-    const [edit, setEdit] = useState(false);
-    const { vehicle, vehicleName, setVehicleName, vehicleManu, setVehicleManu, vehicleColor, setVehicleColor, loading, error } = useFetchVehicle(vehicleId);
-    const saveVehicle = async (e: React.MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => {
-        e.preventDefault();
-        console.log(vehicleName);
-        console.log(vehicleManu);
-        console.log(vehicleColor);
-        try {
-            // const res = await updateGuildPrefix(guildId, prefix);
-            // console.log(res);
-        } catch (err) {
-            console.log(err);
-        }
-    };
-    return vhContext ? (
+    const { vehicle } = useContext(VehicleContext);
+
+    const handleEdit = () => {
+        navigate('/dashboard/edit')
+    }
+    return (
         <Page>
             <Container style={{ width: '800px' }}>
-                {!loading && vehicle ? <>
-                    <Title>Update vehicle</Title>
-                    <form>
-                        <div>
-                            <label htmlFor="prefix">Vehicle name</label>
-                        </div>
-                        <InputField value={vehicle.vehicle} onChange={(e) => setVehicleName(e.target.value)} style={{ margin: '10px 0' }} id="prefix" />
-                        <div>
-                            <label htmlFor="prefix">Vehicle manufacturer</label>
-                        </div>
-                        <InputField value={vehicle.manufacturer} onChange={(e) => setVehicleManu(e.target.value)} style={{ margin: '10px 0' }} id="prefix" />
-                        <div>
-                            <label htmlFor="prefix">Vehicle color</label>
-                        </div>
-                        <InputField value={vehicle.color} onChange={(e) => setVehicleColor(e.target.value)} style={{ margin: '10px 0' }} id="prefix" />
-                        <Flex justifyContent="flex-end">
-                            <Button variant="secondary" type="button" style={{ marginRight: '8px' }}>Reset</Button>
-                            <Button variant="primary" onClick={(e) => saveVehicle(e)}>Save</Button>
+                {vehicle ?
+                    <div>
+                        <Flex justifyContent="space-between" style={{ marginBottom: '10px' }}>
+                            <Title>View Vehicle</Title>
+                            <div onClick={handleEdit}><FaPen style={{ verticalAlign: 'middle', marginRight: '10px' }} size={20} />Edit</div>
                         </Flex>
-                    </form>
-                </> : <Flex justifyContent="center" alignItems="center">
-                    {/* <MoonLoader size={30} color="white" /> */}
-                    <PropagateLoader color="#fff" />
-                </Flex>
-                }
+                        <Flex justifyContent="space-between" style={{ fontSize: '1.1em', borderBottom: '1px solid #999', marginBottom: '5px' }}>
+                            <p>Name:</p>
+                            <p style={{ fontWeight: 'bold' }}>{vehicle.vehicle}</p>
+                        </Flex>
+                        <Flex justifyContent="space-between" style={{ fontSize: '1.1em', borderBottom: '1px solid #999', marginBottom: '5px' }}>
+                            <p>Manufacturer:</p>
+                            <p style={{ fontWeight: 'bold' }}>{vehicle.manufacturer}</p>
+                        </Flex>
+                        <Flex justifyContent="space-between" style={{ fontSize: '1.1em', borderBottom: '1px solid #999', marginBottom: '5px' }}>
+                            <p>Color:</p>
+                            <p style={{ fontWeight: 'bold' }}>{vehicle.color}</p>
+                        </Flex>
+                        <Flex justifyContent="space-between" style={{ fontSize: '1.1em', borderBottom: '1px solid #999', marginBottom: '5px' }}>
+                            <p>Type:</p>
+                            <p style={{ fontWeight: 'bold' }}>{vehicle.type}</p>
+                        </Flex>
+                        <Flex justifyContent="space-between" style={{ fontSize: '1.1em', borderBottom: '1px solid #999', marginBottom: '5px' }}>
+                            <p>Model:</p>
+                            <p style={{ fontWeight: 'bold' }}>{vehicle.model}</p>
+                        </Flex>
+                        <Flex justifyContent="space-between" style={{ fontSize: '1.1em', borderBottom: '1px solid #999', marginBottom: '5px' }}>
+                            <p>Created at:</p>
+                            <p style={{ fontWeight: 'bold' }}>{new Date(vehicle.createdAt).toLocaleString()}</p>
+                        </Flex>
+                        <Flex justifyContent="flex-end">
+                            <Button onClick={() => navigate("/dashboard")} variant="primary">Back</Button>
+                        </Flex>
+                    </div>
+                    : <Flex justifyContent="center" alignItems="center">
+                        {/* <MoonLoader size={30} color="white" /> */}
+                        <PropagateLoader color="#fff" />
+                    </Flex>}
             </Container>
         </Page>
-    ) : (
-        <Navigate replace to="/dashboard" />
     )
 }

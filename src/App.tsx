@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { PropagateLoader } from 'react-spinners';
 import { Spinner } from './components/Spinner';
-import { LoginPage, MenuPage, VehicleEditPage, VehicleShowPage } from './pages';
+import { LoginPage, MenuPage, VehicleCreatePage, VehicleEditPage, VehicleShowPage } from './pages';
 import { VehicleContext } from './utils/context/VehicleContext';
 import { useFetchVehicles } from './utils/hooks/useFetchVehicles';
 import { Flex } from './utils/styles';
@@ -23,6 +23,7 @@ function App() {
 					<Route path="/" element={<LoginPage />} />
 					<Route path="/dashboard" element={<MenuPage />} />
 					<Route path="/dashboard/show" element={<VehicleShowPage />} />
+					<Route path="/dashboard/create" element={<VehicleCreatePage />} />
 					<Route path="/dashboard/edit" element={<VehicleEditPage />} />
 				</Routes>
 			) : (

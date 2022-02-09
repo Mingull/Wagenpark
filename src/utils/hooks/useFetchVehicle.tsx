@@ -7,6 +7,9 @@ export function useFetchVehicle(id: string) {
     const [vehicleName, setVehicleName] = useState('');
     const [vehicleManu, setVehicleManu] = useState('');
     const [vehicleColor, setVehicleColor] = useState('');
+    const [vehicleType, setVehicleType] = useState('');
+    const [vehicleModel, setVehicleModel] = useState('');
+    const [vehicleCreatedAt, setVehicleCreatedAt] = useState<Date>(new Date());
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState();
 
@@ -15,16 +18,20 @@ export function useFetchVehicle(id: string) {
         getVehicle(id)
             .then(({ data }) => {
                 setVehicle(data);
+                setVehicleName(data.vehicle);
+                setVehicleType(data.type);
+                setVehicleManu(data.manufacturer);
+                setVehicleModel(data.model);
+                setVehicleColor(data.color);
+                setVehicleCreatedAt(new Date(data.createdAt));
             })
             .catch((err) => {
                 console.log(err);
                 setError(err);
             })
             .finally(() => {
-                setTimeout(() => {
-                    setLoading(false);
-                }, 2000);
+                setLoading(false);
             });
-    }, []);
-    return { vehicle, vehicleName, setVehicleName, vehicleManu, setVehicleManu, vehicleColor, setVehicleColor, loading, error };
+    }, [id]);
+    return { vehicle, vehicleName, setVehicleName, vehicleManu, setVehicleManu, vehicleColor, setVehicleColor, vehicleType, setVehicleType, vehicleModel, setVehicleModel, vehicleCreatedAt, setVehicleCreatedAt, loading, error };
 }

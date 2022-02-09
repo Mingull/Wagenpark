@@ -1,25 +1,29 @@
-import { useContext } from "react";
+import React from "react";
+import { FaPlusCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { PropagateLoader } from "react-spinners";
 import { MenuItem } from "../components/MenuItem";
-import { VehicleContext } from "../utils/context/VehicleContext";
 import { useFetchVehicles } from "../utils/hooks/useFetchVehicles";
-import { Container, Flex, Grid, Page } from "../utils/styles"
-import { Vehicle } from "../utils/types";
+import { Container, Flex, Grid, Page, Paragraph } from "../utils/styles"
 
 export const MenuPage = () => {
     const navigate = useNavigate();
-    const { updateVehicle } = useContext(VehicleContext);
-    const { vehicles, loading, error } = useFetchVehicles();
+    const { vehicles, loading } = useFetchVehicles();
 
-    const handleClick = (vehicle: Vehicle) => {
-        updateVehicle(vehicle);
-        navigate('/dashboard/show');
+
+    const handleCreateClick = () => {
+        navigate('/dashboard/create');
     }
     return (
         <Page>
             <Container>
-                <h2 style={{ fontWeight: 300 }}>Overzicht</h2>
+                <Flex justifyContent="space-between" alignItems="center">
+                    <h2 style={{ fontWeight: 300 }}>Wagen List</h2>
+                    <Paragraph onClick={handleCreateClick}>
+                        <FaPlusCircle style={{ verticalAlign: 'middle' }} size={30} />
+                        <span>Add Wagen</span>
+                    </Paragraph>
+                </Flex>
                 <div>
                     {loading ? (
                         <Flex justifyContent="center">
@@ -28,8 +32,8 @@ export const MenuPage = () => {
                         </Flex>
                     ) : (
                         <Grid>
-                            {vehicles && vehicles.map((vehicle) => (
-                                <div key={vehicle.id} onClick={() => handleClick(vehicle)}>
+                            {vehicles && vehicles.sort((a, b) => { return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime() }).map(vehicle => (
+                                <div key={vehicle.id}>
                                     <MenuItem vehicle={vehicle} />
                                 </div>
                             ))}

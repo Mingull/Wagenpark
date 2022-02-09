@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig } from "axios";
-import { User, Vehicle } from "./types";
+import { Vehicle } from "./types";
 
 const CONFIG: AxiosRequestConfig = {
     withCredentials: false,
@@ -13,3 +13,9 @@ export const getVehicle = (id: string) =>
 
 export const updateVehicle = (vehicle: Vehicle) =>
     axios.put<Vehicle>(`${API_URI}/vehicles/${vehicle.id}`, { ...vehicle }, CONFIG);
+
+export const storeVehicle = (vehicle: Vehicle) =>
+    axios.post<Vehicle>(`${API_URI}/vehicles/`, { ...vehicle }, CONFIG);
+
+export const deleteVehicle = (vehicle: Vehicle) =>
+    axios.delete<Vehicle>(`${API_URI}/vehicles/${vehicle.id}`, CONFIG)
