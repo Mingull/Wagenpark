@@ -1,6 +1,5 @@
 import { HomePageStyle, MainButton } from "../utils/styles";
 import { VscDashboard } from "react-icons/vsc";
-import { FaDiscord } from "react-icons/fa";
 
 export const LoginPage = () => {
     const redirect = () => {

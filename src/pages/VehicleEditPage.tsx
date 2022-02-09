@@ -1,8 +1,6 @@
-import moment from "moment";
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { PropagateLoader } from "react-spinners";
-import { updateVehicle } from "../utils/api";
 import { VehicleContext } from "../utils/context/VehicleContext";
 import { useFetchVehicle } from "../utils/hooks/useFetchVehicle";
 import { Button, Container, Flex, InputField, Page, Title } from "../utils/styles";
@@ -10,7 +8,7 @@ import { Button, Container, Flex, InputField, Page, Title } from "../utils/style
 export const VehicleEditPage = () => {
     const { vehicle: vhContext } = useContext(VehicleContext);
     const vehicleId = (vhContext && vhContext.id) || '';
-    const { vehicle, vehicleName, setVehicleName, vehicleManu, setVehicleManu, vehicleColor, setVehicleColor, vehicleType, setVehicleType, vehicleModel, setVehicleModel, vehicleCreatedAt, setVehicleCreatedAt, loading } = useFetchVehicle(vehicleId);
+    const { vehicle, vehicleName, setVehicleName, vehicleManu, setVehicleManu, vehicleColor, setVehicleColor, vehicleType, setVehicleType, vehicleModel, setVehicleModel, vehicleCreatedAt, loading } = useFetchVehicle(vehicleId);
     const saveVehicle = async (e: React.MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => {
         e.preventDefault();
         console.log(vehicleName);
