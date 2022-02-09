@@ -21,6 +21,9 @@ export const Page = styled.div`
 export const Container = styled.div`
     width: 1200px;
     margin: 0 auto;
+    @media (max-width: 768px) {
+        width: 100%;
+    }
 `;
 export const Paragraph = styled.p`
     cursor: pointer;
